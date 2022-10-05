@@ -1,0 +1,108 @@
+@import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+:root{
+    --primary: #ffffff;
+    --primary-dark: #ECECED;
+    --secondary: #2C2B2B;
+}
+body{
+}
+.sidebar{
+    height: 100vh;
+    width: 80px;
+    position: fixed;
+    overflow: auto;
+    background-color: var(--secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    gap: 100px;
+}
+.sidebar #logo{
+    font-size: 42px;
+    color: #ffffff;
+    text-align: center;
+}
+.sidebar-btns{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+#content{
+    font-family: 'Inter var', sans-serif;
+    background-color: var(--primary-dark);
+    margin-left: 100px ;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+#content-mainframe{
+    background-color: var(--primary);
+    margin: 20px;
+    border-radius: 15px;
+    width: 100%;
+    padding: 15px;
+}
+#header{
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 35px;
+    border-bottom: 1px solid var(--secondary);
+}
+.header-btns{
+    display: flex;
+    gap: 22px;
+}
+#header h1 {
+    color: var(--secondary);
+    font-size: 41px;
+    font-weight: 700;
+}
+.header-btns button{
+    font-family: 'Inter var', sans-serif;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 22px;
+    border-radius: 8px;
+    background-color: var(--secondary);
+    color: var(--primary);
+}
+#search{
+    border-bottom: 1px solid var(--secondary);
+    padding: 25px;
+}
+.search-box{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+#search-input{
+    background-color: var(--primary-dark);
+    border-radius: 5px;
+    height: 27px;
+    border: #cdcdce 1px solid;
+    width: 400px;
+}
+#labels{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--secondary);
+    padding: 25px;
+
+}
+.lbl-half{
+    display: flex;
+    gap: 85px;
+}
+.label-item{
+    font-size: 22px;
+    font-weight: 600;
+}
+#itens{
+    background-color: var(--primary-dark);
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}

@@ -71,6 +71,10 @@ body{
     background-color: var(--secondary);
     color: var(--primary);
 }
+.header-btns button:active{
+    background-color: var(--primary);
+    color: var(--secondary);
+}
 #search{
     border-bottom: 1px solid var(--secondary);
     padding: 25px;
@@ -105,4 +109,18 @@ body{
 #itens{
     background-color: var(--primary-dark);
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 1px;
+}
+.item{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--secondary);
+    padding: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: var(--primary);
+}
+.item-half{
+    display: flex;
+    gap: 85px;
 }

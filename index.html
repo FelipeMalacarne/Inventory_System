@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./add.css">
+    <link rel="stylesheet" href="./new.css">
     <script src="./script.js" defer></script>
     <title>Inventory</title>
 </head>
@@ -50,7 +51,7 @@
         </div>
     </div>
 
-
+<!-- Popup Adicionar -->
     <div id="add-popup-background">
         <div id="add-popup-container">    
             <div id="labels">
@@ -65,7 +66,7 @@
                 </div>
             </div>
             
-            <form action="" class="add-form">
+            <div action="" class="add-form">
                 <div id="itens-add">
                     <!-- Display dinamicamente preenchido -->
                 </div>
@@ -74,17 +75,46 @@
                         <button class="add-btn" onclick="close_add_popup()">Cancelar</button>
                     </div>
                     <div class="add-btns-half">
-                        <button class="add-btn">Novo</button>
+                        <button class="add-btn" onclick="open_new_popup()">Novo</button>
                         <input type="submit" id="send-add" value="Confirmar" class="add-btn">
                     </div>
                 </div>
-
-            </form>
-
-
-        </div>
-        
+            </div>
+        </div> 
     </div>
+
+    <div id="new-popup-background">
+        <div id="new-popup-container">
+            <div class="top">
+                <div id="new-popup-head">
+                <h1>Adicionar novo Item</h1> 
+                </div>
+                <div id="new-popup-lbls">
+                    <div class="new-lbl-half">
+                        <div>Nome</div>
+                    </div>
+                    <div class="new-lbl-half">
+                        <div>Estoque Minimo</div>
+                        <div>Quantidade atual</div>
+                    </div>
+                </div>
+                <div id="new-popup-forms">
+                    <div class="new-input-left">
+                        <input id ="new-name" type="text" >
+                    </div>
+                    <div class="new-input-right">
+                        <input id="new-min" type="number" class="">
+                        <input id="new-qnt" type="number">
+                    </div>
+                </div>
+            </div>
+            <div id="new-popup-btns">
+                <button class="add-btn" onclick="close_new_popup()">Cancelar</button>
+                <button class="add-btn" id="send-new">Confirmar</button>
+            </div>            
+        </div>
+    </div>
+
 
 </body>
 </html>

@@ -175,11 +175,15 @@ function open_add_popup() {
     document.getElementById("add-popup-background").style.display = "flex";
 
 }
-
 function close_add_popup() {
     document.getElementById("add-popup-background").style.display = "none";
 }   
-
+function open_new_popup() {
+    document.getElementById("new-popup-background").style.display = "flex";
+}
+function close_new_popup() {
+    document.getElementById("new-popup-background").style.display = "none";
+}
 
 //Submit add popup
 const btn_send_add = document.querySelector('#send-add')
@@ -198,4 +202,25 @@ btn_send_add.addEventListener("click", (e) => {
     }
   
     close_add_popup()
+})
+
+const btn_send_new = document.querySelector('#send-new')
+btn_send_new.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const new_name = document.querySelector('#new-name')
+    const new_min = document.querySelector('#new-min')
+    const new_qnt = document.querySelector('#new-qnt')
+
+    const new_item = new item(new_name.value, new_min.value, new_qnt.value)
+    my_inv.push(new_item)
+    store_inv_array()
+
+    new_name.value = '';
+    new_min.value = '';
+    new_qnt.value = '';
+
+    load_main_display();
+    load_add_display();
+    close_new_popup()
 })

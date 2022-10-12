@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./add.css">
     <script src="./script.js" defer></script>
     <title>Inventory</title>
 </head>
 <body>
+    <div id="background"></div>
     <div class="sidebar">
         <h1 id="logo">btc.</h1>
         <div class="sidebar-btns">
-            <div id="home-btn"><img src="./images/home-icon.svg" alt="home-icon"></div>
-            <div id="inv-btn"><img src="./images/inv-icon.svg" alt="inv-icon"></div>
+            <div id="home-btn"><a href=""><img src="./images/home-icon.svg" alt="home-icon"></a></div>
+            <div id="inv-btn"> <a href=""><img src="./images/inv-icon.svg" alt="inv-icon"></a></div>
         </div>
     </div>
     <div id="content">
@@ -22,7 +24,7 @@
             <div id="header">
                 <h1>Inventário</h1>
                 <div class="header-btns">
-                    <button>Adicionar</button>
+                    <button onclick="open_add_popup()">Adicionar</button>
                     <button>Remover</button>
                     <button>Histórico</button>
                 </div>
@@ -43,10 +45,45 @@
                 </div>
             </div>
             <div id="itens">
-              
+              <!-- Display dinamicamente preenchido -->
             </div>
         </div>
+    </div>
 
+
+    <div id="add-popup-background">
+        <div id="add-popup-container">    
+            <div id="labels">
+                <div id="lbl-left" class = "lbl-half" >
+                    <div class="label-item">ID</div>
+                    <div class="label-item">Item</div>
+                </div>
+                <div id="lbl-right" class = "lbl-half" >
+                    <div class="label-item">Mínimo</div>
+                    <div class="label-item">Quantidade</div>
+                    <div class="label-item">Adicionar</div>
+                </div>
+            </div>
+            
+            <form action="" class="add-form">
+                <div id="itens-add">
+                    <!-- Display dinamicamente preenchido -->
+                </div>
+                <div class="add-btns">
+                    <div class="add-btns-half">
+                        <button class="add-btn" onclick="close_add_popup()">Cancelar</button>
+                    </div>
+                    <div class="add-btns-half">
+                        <button class="add-btn">Novo</button>
+                        <input type="submit" id="send-add" value="Confirmar" class="add-btn">
+                    </div>
+                </div>
+
+            </form>
+
+
+        </div>
+        
     </div>
 
 </body>

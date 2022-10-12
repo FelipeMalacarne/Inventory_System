@@ -1,0 +1,84 @@
+:root{
+    --primary: #ffffff;
+    --primary-dark: #ECECED;
+    --secondary: #2C2B2B;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#add-popup-background{
+    display: none;
+    position: fixed;    
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+    align-items: center;
+    justify-content: center;
+}
+#add-popup-container {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 80vw;
+    border-radius: 15px;
+    background-color: var(--primary);
+    padding-bottom: 25px;
+}
+#itens-add{
+    /* height: 65vh; */
+    overflow-y: auto;
+}
+.add-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+#itens-add input{
+    border: #cdcdce 1px solid;
+    background-color: var(--primary-dark);
+    width: 99px;
+    height: 20px;
+    text-align: center;
+    
+}
+.add-btns{
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px;
+
+}
+.add-btns-half{
+    display: flex;
+    gap: 85px;
+}
+.add-btn{
+    font-family: 'Inter var', sans-serif;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: var(--secondary);
+    color: var(--primary);
+}
+
+.add-btn:hover{
+    background-color: var(--primary);
+    color: var(--secondary);
+    cursor: pointer;
+
+}
+
+.add-btn:active{
+    background-color: var(--primary);
+    color: var(--primary-dark);
+    cursor: pointer;
+
+}

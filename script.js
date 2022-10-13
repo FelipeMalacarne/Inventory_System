@@ -147,6 +147,44 @@ function add_item_to_add_pop(new_item) {
     display.appendChild(item);
 
 }
+function add_item_to_rm_pop(new_item) {
+    const display= document.querySelector('#itens-add')
+    const item = document.createElement('div');
+    const item_right = document.createElement('div');
+    const item_left = document.createElement('div');
+
+    const id = document.createElement('div');
+    const name = document.createElement('div');
+    const min = document.createElement('div'); 
+    const qnt = document.createElement('div');
+    const input = document.createElement('input');
+    
+    item_right.classList.add('item-half');
+    item_left.classList.add('item-half');
+    item_right.classList.add('item-right');
+    item_left.classList.add('item-left');
+
+    item.classList.add('item');
+    input.classList.add('add-qnt');
+    input.type = "number";
+
+    id.textContent = new_item.id;
+    name.textContent = new_item.name;
+    min.textContent = new_item.min;
+    qnt.textContent = new_item.qnt;
+
+    item_left.appendChild(id);
+    item_left.appendChild(name);
+
+    item_right.appendChild(min);
+    item_right.appendChild(qnt);
+    item_right.appendChild(input);
+
+    item.appendChild(item_left);
+    item.appendChild(item_right);
+    display.appendChild(item);
+
+}
 
 
 
@@ -170,12 +208,11 @@ function load_add_display(){
 }
 
 load_main_display();
-load_add_display()
+load_add_display();
 
 
 function open_add_popup() { 
     document.getElementById("add-popup-background").style.display = "flex";
-
 }
 function close_add_popup() {
     document.getElementById("add-popup-background").style.display = "none";
@@ -186,7 +223,12 @@ function open_new_popup() {
 function close_new_popup() {
     document.getElementById("new-popup-background").style.display = "none";
 }
-
+function open_rm_popup() {
+    document.getElementById("rm-popup-background").style.display = "flex";
+}
+function close_rm_popup() {
+    document.getElementById("rm-popup-background").style.display = "none";
+}
 //Submit add popup
 const btn_send_add = document.querySelector('#send-add')
 btn_send_add.addEventListener("click", (e) => {

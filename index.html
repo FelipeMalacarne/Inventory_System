@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./add.css">
     <link rel="stylesheet" href="./new.css">
+    <link rel="stylesheet" href="./rm.css">
     <script src="./script.js" defer></script>
     <title>Inventory</title>
 </head>
@@ -26,7 +27,7 @@
                 <h1>Inventário</h1>
                 <div class="header-btns">
                     <button onclick="open_add_popup()">Adicionar</button>
-                    <button>Remover</button>
+                    <button onclick="open_rm_popup()">Remover</button>
                     <button>Histórico</button>
                 </div>
             </div>
@@ -50,6 +51,39 @@
             </div>
         </div>
     </div>
+
+<!-- Popup remover -->
+<div id="rm-popup-background">
+    <div id="rm-popup-container">    
+        <div id="labels">
+            <div id="lbl-left" class = "lbl-half" >
+                <div class="label-item">ID</div>
+                <div class="label-item">Item</div>
+            </div>
+            <div id="lbl-right" class = "lbl-half" >
+                <div class="label-item">Mínimo</div>
+                <div class="label-item">Quantidade</div>
+                <div class="label-item">Remover</div>
+            </div>
+        </div>
+        
+        <div action="" class="rm-form">
+            <div id="itens-rm">
+                <!-- Display dinamicamente preenchido -->
+            </div>
+            <div class="rm-btns">
+                <div class="add-btns-half">
+                    <button class="rm-btn" onclick="close_rm_popup()">Cancelar</button>
+                </div>
+                <div class="rm-btns-half">
+                    <button class="rm-btn" onclick="open_rm_popup()">Deletar</button>
+                    <input type="submit" id="send-rm" value="Confirmar" class="rm-btn">
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+
 
 <!-- Popup Adicionar -->
     <div id="add-popup-background">
@@ -83,6 +117,7 @@
         </div> 
     </div>
 
+<!-- Popup Novo item -->
     <div id="new-popup-background">
         <div id="new-popup-container">
             <div class="top">

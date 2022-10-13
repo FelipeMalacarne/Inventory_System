@@ -43,7 +43,9 @@ function store_inv_array(){
     localStorage.setItem("items", JSON.stringify(my_inv));
 }
 function get_local_storage_array(){
-    my_inv = JSON.parse(localStorage.getItem("items"));
+    if(localStorage.getItem("items") != null){ 
+        my_inv = JSON.parse(localStorage.getItem("items"));
+    }
 }
 
 //adds objects to the global inventory
@@ -167,7 +169,7 @@ function load_add_display(){
     my_inv.forEach(element => { add_item_to_add_pop(element)});
 }
 
-load_main_display(my_inv);
+load_main_display();
 load_add_display()
 
 
@@ -212,8 +214,8 @@ btn_send_new.addEventListener("click", (e) => {
     const new_min = document.querySelector('#new-min')
     const new_qnt = document.querySelector('#new-qnt')
 
-    const new_item = new item(new_name.value, new_min.value, new_qnt.value)
-    my_inv.push(new_item)
+    const new_item = new item(new_name.value, parseInt(new_min.value), parseInt(new_qnt.value) )
+    add_new_item_to_inv(new_item);
     store_inv_array()
 
     new_name.value = '';

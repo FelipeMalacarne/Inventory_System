@@ -97,7 +97,7 @@ function delete_item(){
 
 //Adds a item to the domain
 function add_item_to_domain(item_obj) {
-    const display= document.querySelector('#itens')
+    const display= document.querySelector('#itens-main')
     const item = document.createElement('div');
     const item_right = document.createElement('div');
     const item_left = document.createElement('div');
@@ -192,7 +192,11 @@ function load_display(disp){
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
-    my_inv.forEach(element => { add_input_item_to_DOM(element, disp)});
+    if(disp === 'main'){
+        my_inv.forEach(element => { add_item_to_domain(element)});
+    }else{
+        my_inv.forEach(element => { add_input_item_to_DOM(element, disp)});
+    }
 
 }
 

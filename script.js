@@ -186,46 +186,21 @@ function add_input_item_to_DOM(new_item, func) {
     
 }
 
-//load display with inventory data
-function load_main_display(){
-    //clear display DOM structure
-    const parent = document.getElementById("itens");
+/// "add", "rm", "del" 
+function load_display(disp){
+    const parent = document.getElementById(`itens-${disp}`);
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
-    //add all items to display DOM
-    my_inv.forEach(element => { add_item_to_domain(element)});
-}
-function load_add_display(){
-    const parent = document.getElementById("itens-add");
-    while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-    }
-    //add all items to display DOM
-    my_inv.forEach(element => { add_input_item_to_DOM(element,'add')});
-}
-function load_rm_display() {
-    const parent = document.getElementById("itens-rm");
-    while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-    }
-    //add all items to display DOM
-    my_inv.forEach(element => { add_input_item_to_DOM(element,'rm')});
-}
-function load_del_display(){
-    const parent = document.getElementById("itens-del");
-    while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-    }
-    my_inv.forEach(element => { add_input_item_to_DOM(element,'del')});
+    my_inv.forEach(element => { add_input_item_to_DOM(element, disp)});
 
 }
+
 function load_all_displays(){
-    load_main_display();
-    load_add_display();
-    load_rm_display(); 
-    load_del_display();
-
+    load_display('main');
+    load_display('add');
+    load_display('rm');
+    load_display('del');
 }
 load_all_displays();
 

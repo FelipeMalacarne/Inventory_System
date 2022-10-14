@@ -11,6 +11,7 @@ html { font-family: 'Inter', sans-serif; }
 }
 body{
 
+
 }
 #background{
     position: fixed;    
@@ -155,4 +156,23 @@ body{
 .item-right div{
     padding: 0 10px;
 }
-
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    position: absolute;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--secondary);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+  }

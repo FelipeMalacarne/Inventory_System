@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="./reset.css">
-    <link rel="stylesheet" href="./add.css">
-    <link rel="stylesheet" href="./new.css">
-    <link rel="stylesheet" href="./rm.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/add.css">
+    <link rel="stylesheet" href="./styles/new.css">
+    <link rel="stylesheet" href="./styles/rm.css">
+    <link rel="stylesheet" href="./styles/del.css">
     <script src="./script.js" defer></script>
     <title>Inventory</title>
 </head>
@@ -26,8 +27,8 @@
             <div id="header">
                 <h1>Inventário</h1>
                 <div class="header-btns">
-                    <button onclick="open_add_popup()">Adicionar</button>
-                    <button onclick="open_rm_popup()">Remover</button>
+                    <button onclick="open_popup('add')">Adicionar</button>
+                    <button onclick="open_popup('rm')">Remover</button>
                     <button>Histórico</button>
                 </div>
             </div>
@@ -72,17 +73,54 @@
                 <!-- Display dinamicamente preenchido -->
             </div>
             <div class="rm-btns">
-                <div class="add-btns-half">
-                    <button class="rm-btn" onclick="close_rm_popup()">Cancelar</button>
+                <div class="rm-btns-half">
+                    <button class="rm-btn" onclick="close_popup('rm')">Cancelar</button>
                 </div>
                 <div class="rm-btns-half">
-                    <button class="rm-btn" onclick="open_rm_popup()">Deletar</button>
+                    <button class="rm-btn" onclick="open_popup('del')">Deletar</button>
                     <input type="submit" id="send-rm" value="Confirmar" class="rm-btn">
                 </div>
             </div>
         </div>
     </div> 
 </div>
+
+
+
+<!-- Popup delete -->
+<div id="del-popup-background">
+    <div id="del-popup-container"> 
+        <div id="del-popup-head">
+            <h1>Deletar Item</h1> 
+        </div>   
+        <div id="labels">
+            <div id="lbl-left" class = "lbl-half" >
+                <div class="label-item">ID</div>
+                <div class="label-item">Item</div>
+            </div>
+            <div id="lbl-right" class = "lbl-half" >
+                <div class="label-item">Mínimo</div>
+                <div class="label-item">Quantidade</div>
+                <div class="label-item">Remover</div>
+            </div>
+        </div>
+        
+        <div action="" class="del-form">
+            <div id="itens-del">
+                <!-- Display dinamicamente preenchido -->
+            </div>
+            <div class="del-btns">
+                <div class="del-btns-half">
+                    <button class="del-btn" onclick="close_popup('del')">Cancelar</button>
+                </div>
+                <div class="del-btns-half">
+            
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+
 
 
 <!-- Popup Adicionar -->
@@ -106,10 +144,10 @@
                 </div>
                 <div class="add-btns">
                     <div class="add-btns-half">
-                        <button class="add-btn" onclick="close_add_popup()">Cancelar</button>
+                        <button class="add-btn" onclick="close_popup('add')">Cancelar</button>
                     </div>
                     <div class="add-btns-half">
-                        <button class="add-btn" onclick="open_new_popup()">Novo</button>
+                        <button class="add-btn" onclick="open_popup('new')">Novo</button>
                         <input type="submit" id="send-add" value="Confirmar" class="add-btn">
                     </div>
                 </div>
@@ -144,12 +182,11 @@
                 </div>
             </div>
             <div id="new-popup-btns">
-                <button class="add-btn" onclick="close_new_popup()">Cancelar</button>
+                <button class="add-btn" onclick="close_popup('new')">Cancelar</button>
                 <button class="add-btn" id="send-new">Confirmar</button>
             </div>            
         </div>
     </div>
-
 
 </body>
 </html>

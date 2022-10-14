@@ -1,0 +1,78 @@
+#del-popup-background{
+    display: none;
+    position: fixed;    
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+    align-items: center;
+    justify-content: center;
+}
+#del-popup-container {
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    width: 70vw;
+    border-radius: 15px;
+    background-color: var(--primary);
+    padding-bottom: 25px;
+}
+#del-popup-head{
+    font-size: 32px;
+    font-weight: 700;
+    padding: 25px;
+    border-bottom: 1px solid var(--secondary);
+}
+#itens-del{
+    max-height: 35vh;
+    overflow-y: auto;
+}
+.del-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+#itens-del input{
+    border: #cdcdce 1px solid;
+    background-color: var(--primary-dark);
+    width: 99px;
+    height: 20px;
+    text-align: center;
+}
+.del-btns{
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 25px;
+
+}
+.del-btns-half{
+    display: flex;
+    gap: 85px;
+}
+.del-btn{
+    font-family: 'Inter var', sans-serif;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: var(--secondary);
+    color: var(--primary);
+}
+
+.del-btn:hover{
+    background-color: var(--primary);
+    color: var(--secondary);
+    cursor: pointer;
+
+}
+
+.del-btn:active{
+    background-color: var(--primary);
+    color: var(--primary-dark);
+    cursor: pointer;
+
+}

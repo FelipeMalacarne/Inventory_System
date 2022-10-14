@@ -1,21 +1,21 @@
 //global inventory
 let my_inv = [
     {
-        "id": "#1",
+        "id": 1,
         "name":"voodka",
         "min": 50,
         "qnt": 30,
         "status": false
     },
     {
-        "id": "#2",
+        "id": 2,
         "name":"red label",
         "min": 50,
         "qnt": 30,
         "status": false
     },
     {
-        "id": "#3",
+        "id": 3,
         "name":"gin",
         "min": 50,
         "qnt": 30,
@@ -27,8 +27,8 @@ let my_inv = [
 get_local_storage_array();
 
 //item constructor function
-function item(name, min, qnt) {
-    this.id = "#" + (my_inv.length+1);
+function item(id, name, min, qnt) {
+    this.id = id;
     this.name = name;
     this.min = min;
     this.qnt = qnt;
@@ -52,6 +52,7 @@ function get_local_storage_array(){
 function add_new_item_to_inv(new_item) {
     if (!my_inv.some(item => item.name === new_item.name)){
         my_inv.push(new_item)
+        my_inv.sort((a, b) => a.id - b.id);
     }
     else{
         alert("Error: " + new_item.name + " already exists");
@@ -62,11 +63,35 @@ function increment_item(increment, id){
         my_inv[id].qnt += parseInt(increment);
         if(my_inv[id].min <= my_inv[id].qnt){
             my_inv[id].status = true;
+        }else{
+            my_inv[id].status = false;
         }
     }
     store_inv_array();
-    load_main_display();
-    load_add_display();
+    load_all_displays();
+}
+function decrement_item(decrement, id){
+    if (decrement > 0){
+        my_inv[id].qnt -= parseInt(decrement);
+        if(!(my_inv[id].min <= my_inv[id].qnt)){
+            my_inv[id].status = false;
+        }else{
+            my_inv[id].status = true;
+        }
+    }
+    store_inv_array();
+    load_all_displays();
+}
+function delete_item(){
+    const index = my_inv.findIndex(object => {
+        return object.id == this.value;
+      });
+
+
+    my_inv.splice(index, 1);
+    store_inv_array();
+    load_all_displays();
+
 }
 
 
@@ -90,7 +115,7 @@ function add_item_to_domain(item_obj) {
     item_left.classList.add('item-left');
     item.classList.add('item');
 
-    id.textContent = item_obj.id;
+    id.textContent = "#" + item_obj.id;
     name.textContent = item_obj.name;
     min.textContent = item_obj.min;
     qnt.textContent = item_obj.qnt;
@@ -109,8 +134,8 @@ function add_item_to_domain(item_obj) {
     display.appendChild(item);
 
 }
-function add_item_to_add_pop(new_item) {
-    const display= document.querySelector('#itens-add')
+function add_input_item_to_DOM(new_item, func) {
+    const display= document.querySelector(`#itens-${func}`)
     const item = document.createElement('div');
     const item_right = document.createElement('div');
     const item_left = document.createElement('div');
@@ -119,7 +144,13 @@ function add_item_to_add_pop(new_item) {
     const name = document.createElement('div');
     const min = document.createElement('div'); 
     const qnt = document.createElement('div');
+    const btn = document.createElement('button');
     const input = document.createElement('input');
+
+    input.classList.add(`${func}-qnt`);
+    input.type = "number";
+
+   
     
     item_right.classList.add('item-half');
     item_left.classList.add('item-half');
@@ -127,10 +158,9 @@ function add_item_to_add_pop(new_item) {
     item_left.classList.add('item-left');
 
     item.classList.add('item');
-    input.classList.add('add-qnt');
-    input.type = "number";
 
-    id.textContent = new_item.id;
+
+    id.textContent =  "#" + new_item.id;
     name.textContent = new_item.name;
     min.textContent = new_item.min;
     qnt.textContent = new_item.qnt;
@@ -140,53 +170,21 @@ function add_item_to_add_pop(new_item) {
 
     item_right.appendChild(min);
     item_right.appendChild(qnt);
-    item_right.appendChild(input);
+    if(func ==='del'){
+        btn.textContent = 'Delete';
+        btn.classList.add('del-btn');
+        btn.value = new_item.id;
+        btn.onclick = delete_item
+        item_right.appendChild(btn);
+    }else{
+        item_right.appendChild(input);
+    }
 
     item.appendChild(item_left);
     item.appendChild(item_right);
     display.appendChild(item);
-
-}
-function add_item_to_rm_pop(new_item) {
-    const display= document.querySelector('#itens-add')
-    const item = document.createElement('div');
-    const item_right = document.createElement('div');
-    const item_left = document.createElement('div');
-
-    const id = document.createElement('div');
-    const name = document.createElement('div');
-    const min = document.createElement('div'); 
-    const qnt = document.createElement('div');
-    const input = document.createElement('input');
     
-    item_right.classList.add('item-half');
-    item_left.classList.add('item-half');
-    item_right.classList.add('item-right');
-    item_left.classList.add('item-left');
-
-    item.classList.add('item');
-    input.classList.add('add-qnt');
-    input.type = "number";
-
-    id.textContent = new_item.id;
-    name.textContent = new_item.name;
-    min.textContent = new_item.min;
-    qnt.textContent = new_item.qnt;
-
-    item_left.appendChild(id);
-    item_left.appendChild(name);
-
-    item_right.appendChild(min);
-    item_right.appendChild(qnt);
-    item_right.appendChild(input);
-
-    item.appendChild(item_left);
-    item.appendChild(item_right);
-    display.appendChild(item);
-
 }
-
-
 
 //load display with inventory data
 function load_main_display(){
@@ -204,31 +202,43 @@ function load_add_display(){
         parent.removeChild(parent.firstChild);
     }
     //add all items to display DOM
-    my_inv.forEach(element => { add_item_to_add_pop(element)});
+    my_inv.forEach(element => { add_input_item_to_DOM(element,'add')});
+}
+function load_rm_display() {
+    const parent = document.getElementById("itens-rm");
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+    //add all items to display DOM
+    my_inv.forEach(element => { add_input_item_to_DOM(element,'rm')});
+}
+function load_del_display(){
+    const parent = document.getElementById("itens-del");
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+    my_inv.forEach(element => { add_input_item_to_DOM(element,'del')});
+
+}
+function load_all_displays(){
+    load_main_display();
+    load_add_display();
+    load_rm_display(); 
+    load_del_display();
+
+}
+load_all_displays();
+
+
+///func = "add", "new", "rm", "del"
+function open_popup(func){
+    document.getElementById(`${func}-popup-background`).style.display = "flex";
+}
+function close_popup(func){
+    document.getElementById(`${func}-popup-background`).style.display = "none";
 }
 
-load_main_display();
-load_add_display();
 
-
-function open_add_popup() { 
-    document.getElementById("add-popup-background").style.display = "flex";
-}
-function close_add_popup() {
-    document.getElementById("add-popup-background").style.display = "none";
-}   
-function open_new_popup() {
-    document.getElementById("new-popup-background").style.display = "flex";
-}
-function close_new_popup() {
-    document.getElementById("new-popup-background").style.display = "none";
-}
-function open_rm_popup() {
-    document.getElementById("rm-popup-background").style.display = "flex";
-}
-function close_rm_popup() {
-    document.getElementById("rm-popup-background").style.display = "none";
-}
 //Submit add popup
 const btn_send_add = document.querySelector('#send-add')
 btn_send_add.addEventListener("click", (e) => {
@@ -245,9 +255,10 @@ btn_send_add.addEventListener("click", (e) => {
         increment_item(inputs_value_list[i], i)
     }
   
-    close_add_popup()
+    close_popup('add')
 })
 
+//Submit new popup
 const btn_send_new = document.querySelector('#send-new')
 btn_send_new.addEventListener("click", (e) => {
     e.preventDefault();
@@ -256,7 +267,16 @@ btn_send_new.addEventListener("click", (e) => {
     const new_min = document.querySelector('#new-min')
     const new_qnt = document.querySelector('#new-qnt')
 
-    const new_item = new item(new_name.value, parseInt(new_min.value), parseInt(new_qnt.value) )
+    let new_id;
+    for(let i = 0; i < my_inv.length; i++){
+        if(i + 1 != my_inv[i].id){
+            new_id = i + 1;
+            break;
+        }else{
+            new_id =  my_inv.length + 1;
+        }
+    }
+    const new_item = new item(new_id, new_name.value, parseInt(new_min.value), parseInt(new_qnt.value))
     add_new_item_to_inv(new_item);
     store_inv_array()
 
@@ -264,7 +284,25 @@ btn_send_new.addEventListener("click", (e) => {
     new_min.value = '';
     new_qnt.value = '';
 
-    load_main_display();
-    load_add_display();
-    close_new_popup()
+    load_all_displays();
+    close_popup('new')
+})
+
+//Submit rm popup
+const btn_send_rm = document.querySelector('#send-rm')
+btn_send_rm.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const inputs_node_list = document.querySelectorAll('.rm-qnt')
+    let inputs_value_list = [];
+
+    for (const input of inputs_node_list.values()) {
+        inputs_value_list.push(input.value);
+        input.value = '';
+    }
+    for (let i = 0; i < inputs_value_list.length; i++) {
+        decrement_item(inputs_value_list[i], i)
+    }
+  
+    close_popup('rm')
 })

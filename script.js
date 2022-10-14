@@ -25,6 +25,7 @@ let my_inv = [
 ]
 
 get_local_storage_array();
+load_all_displays();
 
 //item constructor function
 function item(id, name, min, qnt) {
@@ -47,7 +48,21 @@ function get_local_storage_array(){
         my_inv = JSON.parse(localStorage.getItem("items"));
     }
 }
-
+function assign_id(){
+    let new_id;
+    for(let i = 0; i < my_inv.length; i++){
+        if(i + 1 != my_inv[i].id){
+            new_id = i + 1;
+            break;
+        }else{
+            new_id =  my_inv.length + 1;
+        }
+    }
+    if(my_inv.length === 0){
+        new_id = 1;
+    }
+    return new_id;
+}
 //adds objects to the global inventory
 function add_new_item_to_inv(new_item) {
     if (!my_inv.some(item => item.name === new_item.name)){
@@ -93,122 +108,64 @@ function delete_item(){
     load_all_displays();
 
 }
-
-
-//Adds a item to the domain
-function add_item_to_domain(item_obj) {
-    const display= document.querySelector('#itens-main')
+function add_item_to_DOM(new_item, func) {
+    const display= document.querySelector(`#itens-${func}`)
     const item = document.createElement('div');
     const item_right = document.createElement('div');
     const item_left = document.createElement('div');
-    
     const id = document.createElement('div');
     const name = document.createElement('div');
     const min = document.createElement('div'); 
     const qnt = document.createElement('div');
     const status = document.createElement('div');
-    
-    
-    item_right.classList.add('item-half');
-    item_left.classList.add('item-half');
-    item_right.classList.add('item-right');
-    item_left.classList.add('item-left');
-    item.classList.add('item');
-
-    id.textContent = "#" + item_obj.id;
-    name.textContent = item_obj.name;
-    min.textContent = item_obj.min;
-    qnt.textContent = item_obj.qnt;
-    status.textContent = item_obj.status;
-
-
-    item_left.appendChild(id);
-    item_left.appendChild(name);
-
-    item_right.appendChild(min);
-    item_right.appendChild(qnt);
-    item_right.appendChild(status);
-
-    item.appendChild(item_left);
-    item.appendChild(item_right);
-    display.appendChild(item);
-
-}
-function add_input_item_to_DOM(new_item, func) {
-    const display= document.querySelector(`#itens-${func}`)
-    const item = document.createElement('div');
-    const item_right = document.createElement('div');
-    const item_left = document.createElement('div');
-
-    const id = document.createElement('div');
-    const name = document.createElement('div');
-    const min = document.createElement('div'); 
-    const qnt = document.createElement('div');
     const btn = document.createElement('button');
     const input = document.createElement('input');
-
-    input.classList.add(`${func}-qnt`);
     input.type = "number";
-
-   
-    
+    input.classList.add(`${func}-qnt`);
     item_right.classList.add('item-half');
     item_left.classList.add('item-half');
     item_right.classList.add('item-right');
     item_left.classList.add('item-left');
-
     item.classList.add('item');
-
-
     id.textContent =  "#" + new_item.id;
     name.textContent = new_item.name;
     min.textContent = new_item.min;
     qnt.textContent = new_item.qnt;
-
+    status.textContent = new_item.status;
     item_left.appendChild(id);
     item_left.appendChild(name);
-
     item_right.appendChild(min);
     item_right.appendChild(qnt);
+    item.appendChild(item_left);
+    item.appendChild(item_right);
+    display.appendChild(item);
     if(func ==='del'){
         btn.textContent = 'Delete';
         btn.classList.add('del-btn');
         btn.value = new_item.id;
         btn.onclick = delete_item
         item_right.appendChild(btn);
-    }else{
-        item_right.appendChild(input);
+    }else if(func =='main'){
+        item_right.appendChild(status);
     }
-
-    item.appendChild(item_left);
-    item.appendChild(item_right);
-    display.appendChild(item);
-    
+    else{
+        item_right.appendChild(input);
+    }   
 }
-
-/// "add", "rm", "del" 
+/// disp = ["add", "rm", "del" ,"new"]
 function load_display(disp){
     const parent = document.getElementById(`itens-${disp}`);
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
-    if(disp === 'main'){
-        my_inv.forEach(element => { add_item_to_domain(element)});
-    }else{
-        my_inv.forEach(element => { add_input_item_to_DOM(element, disp)});
-    }
-
+    my_inv.forEach(element => { add_item_to_DOM(element, disp)});
 }
-
 function load_all_displays(){
     load_display('main');
     load_display('add');
     load_display('rm');
     load_display('del');
 }
-load_all_displays();
-
-
 ///func = "add", "new", "rm", "del"
 function open_popup(func){
     document.getElementById(`${func}-popup-background`).style.display = "flex";
@@ -216,23 +173,6 @@ function open_popup(func){
 function close_popup(func){
     document.getElementById(`${func}-popup-background`).style.display = "none";
 }
-function assign_id(){
-    let new_id;
-    for(let i = 0; i < my_inv.length; i++){
-        if(i + 1 != my_inv[i].id){
-            new_id = i + 1;
-            break;
-        }else{
-            new_id =  my_inv.length + 1;
-        }
-    }
-    if(my_inv.length === 0){
-        new_id = 1;
-    }
-    return new_id;
-
-}
-
 //Submit add popup
 const btn_send_add = document.querySelector('#send-add')
 btn_send_add.addEventListener("click", (e) => {

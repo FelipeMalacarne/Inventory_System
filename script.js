@@ -237,7 +237,22 @@ function open_popup(func){
 function close_popup(func){
     document.getElementById(`${func}-popup-background`).style.display = "none";
 }
+function assign_id(){
+    let new_id;
+    for(let i = 0; i < my_inv.length; i++){
+        if(i + 1 != my_inv[i].id){
+            new_id = i + 1;
+            break;
+        }else{
+            new_id =  my_inv.length + 1;
+        }
+    }
+    if(my_inv.length === 0){
+        new_id = 1;
+    }
+    return new_id;
 
+}
 
 //Submit add popup
 const btn_send_add = document.querySelector('#send-add')
@@ -266,16 +281,8 @@ btn_send_new.addEventListener("click", (e) => {
     const new_name = document.querySelector('#new-name')
     const new_min = document.querySelector('#new-min')
     const new_qnt = document.querySelector('#new-qnt')
-
-    let new_id;
-    for(let i = 0; i < my_inv.length; i++){
-        if(i + 1 != my_inv[i].id){
-            new_id = i + 1;
-            break;
-        }else{
-            new_id =  my_inv.length + 1;
-        }
-    }
+    const new_id = assign_id();
+   
     const new_item = new item(new_id, new_name.value, parseInt(new_min.value), parseInt(new_qnt.value))
     add_new_item_to_inv(new_item);
     store_inv_array()

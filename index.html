@@ -27,9 +27,9 @@
             <div id="header">
                 <h1>Inventário</h1>
                 <div class="header-btns">
-                    <button onclick="open_popup('add')">Adicionar</button>
-                    <button onclick="open_popup('rm')">Remover</button>
-                    <button>Histórico</button>
+                    <button onclick="DOM.open_popup('add')">Adicionar</button>
+                    <button onclick="DOM.open_popup('rm')">Remover</button>
+                    <button onclick="api_teste()">Histórico</button>
                 </div>
             </div>
             <div id="search">
@@ -74,10 +74,10 @@
             </div>
             <div class="rm-btns">
                 <div class="rm-btns-half">
-                    <button class="rm-btn" onclick="close_popup('rm')">Cancelar</button>
+                    <button class="rm-btn" onclick="DOM.close_popup('rm')">Cancelar</button>
                 </div>
                 <div class="rm-btns-half">
-                    <button class="rm-btn" onclick="open_popup('del')">Deletar</button>
+                    <button class="rm-btn" onclick="DOM.open_popup('del')">Deletar</button>
                     <input type="submit" id="send-rm" value="Confirmar" class="rm-btn">
                 </div>
             </div>
@@ -111,7 +111,7 @@
             </div>
             <div class="del-btns">
                 <div class="del-btns-half">
-                    <button class="del-btn" onclick="close_popup('del')">Cancelar</button>
+                    <button class="del-btn" onclick="DOM.close_popup('del')">Cancelar</button>
                 </div>
                 <div class="del-btns-half">
             
@@ -138,16 +138,16 @@
                 </div>
             </div>
             
-            <div action="" class="add-form">
+            <div class="add-form">
                 <div id="itens-add">
                     <!-- Display dinamicamente preenchido -->
                 </div>
                 <div class="add-btns">
                     <div class="add-btns-half">
-                        <button class="add-btn" onclick="close_popup('add')">Cancelar</button>
+                        <button class="add-btn" onclick="DOM.close_popup('add')">Cancelar</button>
                     </div>
                     <div class="add-btns-half">
-                        <button class="add-btn" onclick="open_popup('new')">Novo</button>
+                        <button class="add-btn" onclick="DOM.open_popup('new')">Novo</button>
                         <input type="submit" id="send-add" value="Confirmar" class="add-btn">
                     </div>
                 </div>
@@ -182,7 +182,7 @@
                 </div>
             </div>
             <div id="new-popup-btns">
-                <button class="add-btn" onclick="close_popup('new')">Cancelar</button>
+                <button class="add-btn" onclick="DOM.close_popup('new')">Cancelar</button>
                 <button class="add-btn" id="send-new">Confirmar</button>
             </div>            
         </div>

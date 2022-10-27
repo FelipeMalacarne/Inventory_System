@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.7 on win32)" generated="20221026 21:19:15.316" rpa="false" schemaversion="3">
+<suite id="s1" name="Inventory Test Cases" source="D:\DOCUMENTOS\repos\projetoIntegradorII\tests\inventory_test_cases.robot">
+<test id="s1-t1" name="Cenario: Adicionar Novo Item Valido" line="9">
+<kw name="Abrir Navegador inventário" library="inventory_keywords" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221026 21:19:16.557" level="INFO">Opening browser 'Chrome' to base url 'http://127.0.0.1:5501/index.html'.</msg>
+<status status="PASS" starttime="20221026 21:19:16.557" endtime="20221026 21:19:18.949"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Inventory</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20221026 21:19:18.971" level="INFO">Page title is 'Inventory'.</msg>
+<status status="PASS" starttime="20221026 21:19:18.950" endtime="20221026 21:19:18.971"/>
+</kw>
+<status status="PASS" starttime="20221026 21:19:16.555" endtime="20221026 21:19:18.973"/>
+</kw>
+<kw name="Abrir Popup Item Novo" library="inventory_keywords">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>Adicionar</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221026 21:19:18.978" level="INFO">Clicking button 'Adicionar'.</msg>
+<status status="PASS" starttime="20221026 21:19:18.977" endtime="20221026 21:19:19.204"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>Novo</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221026 21:19:19.206" level="INFO">Clicking button 'Novo'.</msg>
+<status status="PASS" starttime="20221026 21:19:19.204" endtime="20221026 21:19:19.417"/>
+</kw>
+<status status="PASS" starttime="20221026 21:19:18.976" endtime="20221026 21:19:19.418"/>
+</kw>
+<kw name="Inserir Dados Novo Item Dinamico Valido" library="inventory_keywords">
+<kw name="Name" library="FakerLibrary">
+<var>${name}</var>
+<doc>:example 'John Doe'</doc>
+<msg timestamp="20221026 21:19:19.423" level="INFO">${name} = Anne Chavez</msg>
+<status status="PASS" starttime="20221026 21:19:19.421" endtime="20221026 21:19:19.423"/>
+</kw>
+<kw name="Random Number" library="FakerLibrary">
+<var>${min}</var>
+<doc>Generate a random integer according to the following rules:</doc>
+<msg timestamp="20221026 21:19:19.425" level="INFO">${min} = 86</msg>
+<status status="PASS" starttime="20221026 21:19:19.424" endtime="20221026 21:19:19.425"/>
+</kw>
+<kw name="Random Number" library="FakerLibrary">
+<var>${qnt}</var>
+<doc>Generate a random integer according to the following rules:</doc>
+<msg timestamp="20221026 21:19:19.426" level="INFO">${qnt} = 897659</msg>
+<status status="PASS" starttime="20221026 21:19:19.425" endtime="20221026 21:19:19.426"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>new-name</arg>
+<arg>${name}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221026 21:19:19.429" level="INFO">Typing text 'Anne Chavez' into text field 'new-name'.</msg>
+<status status="PASS" starttime="20221026 21:19:19.427" endtime="20221026 21:19:19.749"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>new-min</arg>
+<arg>${min}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221026 21:19:19.751" level="INFO">Typing text '86' into text field 'new-min'.</msg>
+<status status="PASS" starttime="20221026 21:19:19.749" endtime="20221026 21:19:20.017"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>new-qnt</arg>
+<arg>${qnt}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221026 21:19:20.019" level="INFO">Typing text '897659' into text field 'new-qnt'.</msg>
+<status status="PASS" starttime="20221026 21:19:20.018" endtime="20221026 21:19:20.283"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${name}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20221026 21:19:20.285" level="INFO">${name} = Anne Chavez</msg>
+<status status="PASS" starttime="20221026 21:19:20.284" endtime="20221026 21:19:20.285"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${min}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20221026 21:19:20.286" level="INFO">${min} = 86</msg>
+<status status="PASS" starttime="20221026 21:19:20.285" endtime="20221026 21:19:20.286"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${qnt}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20221026 21:19:20.288" level="INFO">${qnt} = 897659</msg>
+<status status="PASS" starttime="20221026 21:19:20.287" endtime="20221026 21:19:20.288"/>
+</kw>
+<status status="PASS" starttime="20221026 21:19:19.420" endtime="20221026 21:19:20.289"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>send-new</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221026 21:19:20.291" level="INFO">Clicking button 'send-new'.</msg>
+<status status="PASS" starttime="20221026 21:19:20.290" endtime="20221026 21:19:20.491"/>
+</kw>
+<kw name="Checar Item Novo" library="inventory_keywords">
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${name}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20221026 21:19:20.552" level="INFO">Current page contains text 'Anne Chavez'.</msg>
+<status status="PASS" starttime="20221026 21:19:20.495" endtime="20221026 21:19:20.552"/>
+</kw>
+<status status="PASS" starttime="20221026 21:19:20.493" endtime="20221026 21:19:20.553"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221026 21:19:20.555" endtime="20221026 21:19:22.805"/>
+</kw>
+<status status="PASS" starttime="20221026 21:19:16.554" endtime="20221026 21:19:22.807"/>
+</test>
+<doc>Test cases para a interface de invetario da aplicação</doc>
+<status status="PASS" starttime="20221026 21:19:15.321" endtime="20221026 21:19:22.814"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Inventory Test Cases">Inventory Test Cases</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

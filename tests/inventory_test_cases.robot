@@ -11,7 +11,7 @@ Cenario: Adicionar Novo Item Valido
     Inserir Dados Novo Item Dinamico Valido
     Click Button    send-new
     Checar Item Novo
-    # ${item}        Get WebElement    ${name}
+    ${item}        Get WebElement    ${name}
     # Log To Console    ${item}
     
 

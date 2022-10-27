@@ -24,6 +24,8 @@ let my_inv = [
     
 ]
 
+
+
 //Factory pattern para criação de itens
 const item_factory = (id, name, min, qnt) => {
     const status = (qnt >= min)
@@ -119,6 +121,7 @@ const DOM = (() => {
         const item_left = document.createElement('div');
         const id = document.createElement('div');
         const name = document.createElement('div');
+        name.classList.add('name');
         const min = document.createElement('div'); 
         const qnt = document.createElement('div');
         const status = document.createElement('div');
@@ -140,6 +143,7 @@ const DOM = (() => {
         item_right.classList.add('item-right');
         item_left.classList.add('item-left');
         item.classList.add('item');
+        item.setAttribute('value', item_obj.name);
 
         id.textContent =  "#" + item_obj.id;
         name.textContent = item_obj.name;
@@ -266,5 +270,23 @@ btn_send_rm.addEventListener("click", (e) => {
     DOM.close_popup('rm')
 })
 
+const search_input = document.querySelector('#search-input')
+search_input.addEventListener('input', (e) =>{
+    const filter_value = e.target.value.toUpperCase();
+    const li = document.querySelectorAll('.item');
+
+    for(let i = 0; i < li.length; i++){
+        a = document.querySelectorAll(".name")[i]
+        txt_value = a.textContent;
+        if(txt_value.toUpperCase().indexOf(filter_value) > -1){
+            li[i].style.display = "";
+        }else{
+            li[i].style.display = "none";
+        }
+    }
+})
+
+
 inv.get_from_local();
 DOM.load_all();
+

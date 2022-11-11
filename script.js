@@ -24,8 +24,6 @@ let my_inv = [
     
 ]
 
-
-
 //Factory pattern para criação de itens
 const item_factory = (id, name, min, qnt) => {
     const status = (qnt >= min)
@@ -36,7 +34,7 @@ const item_factory = (id, name, min, qnt) => {
 const inv = (() => {
     //adds objects to the global inventory
     const add_new_item = (new_item) => {
-        if (!my_inv.some(item => item.name === new_item.name)){
+        if (!my_inv.some(item => item.name.toUpperCase() === new_item.name.toUpperCase())){
             my_inv.push(new_item)
             my_inv.sort((a, b) => a.id - b.id);
         }
@@ -112,7 +110,7 @@ const inv = (() => {
 })();
 
 
-
+//DOM module pattern
 const DOM = (() => {
 
     const create_card = (item_obj, func) => {
@@ -121,13 +119,19 @@ const DOM = (() => {
         const item_left = document.createElement('div');
         const id = document.createElement('div');
         const name = document.createElement('div');
-        name.classList.add('name');
         const min = document.createElement('div'); 
         const qnt = document.createElement('div');
         const status = document.createElement('div');
         const btn = document.createElement('button');
         const input = document.createElement('input');
         input.type = "number";
+
+        name.classList.add('name');        
+        name.classList.add('text');
+        id.classList.add('text');
+        min.classList.add('text');
+        qnt.classList.add('text');
+        status.classList.add('text');
 
 
         item_left.appendChild(id);
@@ -149,7 +153,12 @@ const DOM = (() => {
         name.textContent = item_obj.name;
         min.textContent = item_obj.min;
         qnt.textContent = item_obj.qnt;
-        status.textContent = item_obj.status;
+        if (item_obj.status === true){
+            status.textContent = "Ok"
+        }else{
+            status.textContent = '⚠'
+        }
+        
 
         if(func ==='del'){
             btn.textContent = 'Delete';
@@ -157,8 +166,9 @@ const DOM = (() => {
             btn.value = item_obj.id;
             btn.onclick = inv.delete_item
             item_right.appendChild(btn);
-        }else if(func =='main'){
+        }else if(func ==='main'){
             item_right.appendChild(status);
+
         }else{
             item_right.appendChild(input);
         }   
@@ -178,7 +188,7 @@ const DOM = (() => {
         while (parent.firstChild) {
             parent.removeChild(parent.firstChild);
         }
-        my_inv.forEach(element => {DOM.add_item(element, func)});
+        my_inv.forEach(element => {add_item(element, func)});
     };
 
     const load_all = () => {
@@ -198,7 +208,6 @@ const DOM = (() => {
     };
 
     return{
-        add_item,
         load_display,
         load_all,
         open_popup,
@@ -208,6 +217,8 @@ const DOM = (() => {
 })();
 
 
+
+// ## Event Listeners ##
 //Submit add popup
 const btn_send_add = document.querySelector('#send-add')
 btn_send_add.addEventListener("click", (e) => {

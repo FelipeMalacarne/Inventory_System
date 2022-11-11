@@ -7,6 +7,7 @@ html { font-family: 'Inter', sans-serif; }
     --primary: #ffffff;
     --primary-dark: #ECECED;
     --secondary: #2C2B2B;
+    --secondary-light: #424141;
     font-family: 'Inter var', sans-serif;
 }
 body{
@@ -111,17 +112,35 @@ body{
     height: 27px;
     border: #cdcdce 1px solid;
     width: 400px;
+    font-weight: 500;
+    padding: 0 10px;
 }
+[type="search"]::-webkit-search-cancel-button {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%)
+  }
+
 #labels{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     justify-content: space-between;
     align-items: baseline;
     border-bottom: 1px solid var(--secondary);
     padding: 25px;
 
 }
-.lbl-half{
-    display: flex;
+#lbl-right{
+    display: grid;
+    grid-template-columns: 85px 125px 100px;
+    gap: 50px;
+    justify-content: flex-end;
+}
+#lbl-right div, #lbl-right input{
+    justify-self: center;
+}
+#lbl-left{
+    display: grid;
+    grid-template-columns: 40px 1fr;
     gap: 85px;
 }
 .label-item{
@@ -134,8 +153,8 @@ body{
     padding: 1px;
 }
 .item{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     border-bottom: 1px solid var(--secondary);
     padding: 25px;
     font-size: 16px;
@@ -143,15 +162,22 @@ body{
     background-color: var(--primary);
 }   
 .item-left{
-    display: flex;
-    gap: 90px;
-    flex: 2;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 85px;
 }
 .item-right{
-    display: flex;
-    justify-content: space-between;
-    width: 440px;   
+    display: grid;
+    grid-template-columns: 85px 125px 100px;
+    gap: 50px;
+    justify-content: flex-end;
 
+}
+.item-right div, .item-right input{
+    justify-self: center;
+}
+.item-right .text, .item-left .text{
+    align-self: center;
 }
 .item-right div{
     padding: 0 10px;
@@ -174,5 +200,6 @@ body{
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark);
+    background: var(--secondary-light);
   }
+

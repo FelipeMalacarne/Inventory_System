@@ -55,7 +55,10 @@
 
 <!-- Popup remover -->
 <div id="rm-popup-background">
-    <div id="rm-popup-container">    
+    <div id="rm-popup-container">
+        <div id="rm-popup-head">
+            <h1>Remover Itens</h1> 
+        </div>      
         <div id="labels">
             <div id="lbl-left" class = "lbl-half" >
                 <div class="label-item">ID</div>
@@ -99,7 +102,7 @@
             <div id="lbl-right" class = "lbl-half" >
                 <div class="label-item">Mínimo</div>
                 <div class="label-item">Quantidade</div>
-                <div class="label-item">Remover</div>
+                <div class="label-item">Deletar</div>
             </div>
         </div>
         
@@ -108,7 +111,7 @@
             </div>
             <div class="del-btns">
                 <div class="del-btns-half">
-                    <button class="del-btn" onclick="DOM.close_popup('del')">Cancelar</button>
+                    <button class="rm-btn" onclick="DOM.close_popup('del')">Cancelar</button>
                 </div>
                 <div class="del-btns-half">
             
@@ -121,8 +124,11 @@
 
 
 <!-- Popup Adicionar -->
-    <div id="add-popup-background">
+    <div id="add-popup-background">  
         <div id="add-popup-container">    
+            <div id="add-popup-head">
+                <h1>Adicionar Itens</h1> 
+            </div>
             <div id="labels">
                 <div id="lbl-left" class = "lbl-half" >
                     <div class="label-item">ID</div>

@@ -12,7 +12,7 @@
 }
 #rm-popup-container {
     display: grid;
-    grid-template-rows: 70px 1fr 80px;
+    grid-template-rows: 80px 70px 1fr 80px;
     height: 80vh;
     width: 80vw;
     border-radius: 15px;
@@ -63,4 +63,10 @@
     color: var(--primary-dark);
     cursor: pointer;
 
+}
+#rm-popup-head{
+    font-size: 32px;
+    font-weight: 700;
+    padding: 25px;
+    border-bottom: 1px solid var(--secondary);
 }

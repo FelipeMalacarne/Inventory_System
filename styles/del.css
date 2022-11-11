@@ -13,7 +13,7 @@
 #del-popup-container {
     display: grid;
     grid-template-rows: 80px 70px 1fr 70px;
-    height: 80vh;
+    height: 75vh;
     width: 70vw;
     border-radius: 15px;
     background-color: var(--primary);
@@ -48,20 +48,21 @@
     gap: 85px;
 }
 .del-btn{
+    width: 60px;
     font-family: 'Inter var', sans-serif;
-    padding: 10px 20px;
+    padding: 10px 10px;
     font-weight: 600;
     font-size: 16px;
     border-radius: 8px;
     background-color: var(--secondary);
     color: var(--primary);
+    justify-self: center;
 }
 
 .del-btn:hover{
     background-color: var(--primary);
     color: var(--secondary);
     cursor: pointer;
-
 }
 
 .del-btn:active{
@@ -69,4 +70,10 @@
     color: var(--primary-dark);
     cursor: pointer;
 
+}
+.del-btn:hover > svg *,
+.del-btn:hover {
+  fill: red;
+  border: red 2 px solid;
+  background-color: var(--primary)
 }

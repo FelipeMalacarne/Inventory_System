@@ -86,10 +86,15 @@ const inv = (() => {
         inv.store_in_local();
         DOM.load_all();
     }
-    const delete_item = () => {
+    const delete_item = function(){
+
+        // Encontra o index do Id no inventario
         const index = my_inv.findIndex(object => {
+            console.log(object);
+            console.log(this.value);
             return object.id == this.value;
           });
+
         my_inv.splice(index, 1);
     
         inv.store_in_local();
@@ -114,6 +119,8 @@ const inv = (() => {
 const DOM = (() => {
 
     const create_card = (item_obj, func) => {
+
+        // Creating all divs for the card
         const item = document.createElement('div');
         const item_right = document.createElement('div');
         const item_left = document.createElement('div');
@@ -124,16 +131,8 @@ const DOM = (() => {
         const status = document.createElement('div');
         const btn = document.createElement('button');
         const input = document.createElement('input');
-        input.type = "number";
 
-        name.classList.add('name');        
-        name.classList.add('text');
-        id.classList.add('text');
-        min.classList.add('text');
-        qnt.classList.add('text');
-        status.classList.add('text');
-
-
+        // Appending the Card components
         item_left.appendChild(id);
         item_left.appendChild(name);
         item_right.appendChild(min);
@@ -141,6 +140,13 @@ const DOM = (() => {
         item.appendChild(item_left);
         item.appendChild(item_right);
 
+        // Set div classes
+        name.classList.add('name');        
+        name.classList.add('text');
+        id.classList.add('text');
+        min.classList.add('text');
+        qnt.classList.add('text');
+        status.classList.add('text');
         input.classList.add(`${func}-qnt`);
         item_right.classList.add('item-half');
         item_left.classList.add('item-half');
@@ -149,6 +155,9 @@ const DOM = (() => {
         item.classList.add('item');
         item.setAttribute('value', item_obj.name);
 
+
+        // Set properties
+        input.type = "number";
         id.textContent =  "#" + item_obj.id;
         name.textContent = item_obj.name;
         min.textContent = item_obj.min;
@@ -159,12 +168,19 @@ const DOM = (() => {
             status.textContent = '⚠'
         }
         
-
+        // del function custom card
         if(func ==='del'){
-            btn.textContent = 'Delete';
+
+            // Set SVG Content 
+            const svgContent = '<svg fill="white" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="24px" height="24px"><path d="M 24 4 C 20.704135 4 18 6.7041348 18 10 L 11.746094 10 A 1.50015 1.50015 0 0 0 11.476562 9.9785156 A 1.50015 1.50015 0 0 0 11.259766 10 L 7.5 10 A 1.50015 1.50015 0 1 0 7.5 13 L 10 13 L 10 38.5 C 10 41.519774 12.480226 44 15.5 44 L 32.5 44 C 35.519774 44 38 41.519774 38 38.5 L 38 13 L 40.5 13 A 1.50015 1.50015 0 1 0 40.5 10 L 36.746094 10 A 1.50015 1.50015 0 0 0 36.259766 10 L 30 10 C 30 6.7041348 27.295865 4 24 4 z M 24 7 C 25.674135 7 27 8.3258652 27 10 L 21 10 C 21 8.3258652 22.325865 7 24 7 z M 13 13 L 35 13 L 35 38.5 C 35 39.898226 33.898226 41 32.5 41 L 15.5 41 C 14.101774 41 13 39.898226 13 38.5 L 13 13 z M 20.476562 17.978516 A 1.50015 1.50015 0 0 0 19 19.5 L 19 34.5 A 1.50015 1.50015 0 1 0 22 34.5 L 22 19.5 A 1.50015 1.50015 0 0 0 20.476562 17.978516 z M 27.476562 17.978516 A 1.50015 1.50015 0 0 0 26 19.5 L 26 34.5 A 1.50015 1.50015 0 1 0 29 34.5 L 29 19.5 A 1.50015 1.50015 0 0 0 27.476562 17.978516 z"/></svg>';
+
+            // Set the HTML value
+            btn.innerHTML = svgContent;
+
+            btn.onclick = inv.delete_item
             btn.classList.add('del-btn');
             btn.value = item_obj.id;
-            btn.onclick = inv.delete_item
+
             item_right.appendChild(btn);
         }else if(func ==='main'){
             item_right.appendChild(status);
@@ -248,7 +264,7 @@ btn_send_new.addEventListener("click", (e) => {
     const new_id = inv.assign_id();
 
    if(new_name.value == '' || new_min.value == '' || new_qnt.value == ''){
-        alert('vaisefode')
+        alert('Preencha Todos campos')
     }else{
         const new_item = item_factory(new_id, new_name.value, parseInt(new_min.value), parseInt(new_qnt.value))
         inv.add_new_item(new_item);

@@ -74,6 +74,6 @@
 .del-btn:hover > svg *,
 .del-btn:hover {
   fill: red;
-  border: red 2 px solid;
+  border: red 2px solid;
   background-color: var(--primary)
 }

@@ -317,3 +317,8 @@ search_input.addEventListener('input', (e) =>{
 inv.get_from_local();
 DOM.load_all();
 
+const testedata = () => {
+    let date = new Date;
+    date = date.toString().slice(0, 24);
+    console.log(date);
+}

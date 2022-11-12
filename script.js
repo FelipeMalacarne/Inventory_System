@@ -2,26 +2,74 @@
 let my_inv = [
     {
         "id": 1,
-        "name":"voodka",
-        "min": 50,
-        "qnt": 30,
-        "status": false
+        "name":"Whisky Jack Daniels",
+        "min": 2,
+        "qnt": 3,
+        "status": true
     },
     {
         "id": 2,
-        "name":"red label",
-        "min": 50,
-        "qnt": 30,
+        "name":"Whisky Johnnie Walker Red Label ",
+        "min": 2,
+        "qnt": 1,
         "status": false
     },
     {
         "id": 3,
-        "name":"gin",
-        "min": 50,
-        "qnt": 30,
+        "name":"Gin Tanqueray",
+        "min": 5,
+        "qnt": 10,
+        "status": true
+    },
+    {
+        "id": 4,
+        "name":"Gin Bombay Sapphire",
+        "min": 5,
+        "qnt": 10,
+        "status": true
+    },
+    {
+        "id": 5,
+        "name":"Whisky Johnnie Walker Blue Label",
+        "min": 1,
+        "qnt": 0,
         "status": false
+    },
+    {
+        "id": 6,
+        "name":"Whisky Johnnie Walker Green Label",
+        "min": 2,
+        "qnt": 1,
+        "status": false
+    },
+    {
+        "id": 7,
+        "name":"Cerveja Heineken Long Neck 330ml",
+        "min": 48,
+        "qnt": 60,
+        "status": true
+    },
+    {
+        "id": 8,
+        "name":"Cerveja Heineken Lata 350 ml",
+        "min": 60,
+        "qnt": 72,
+        "status": true
+    }, 
+    {
+        "id": 9,
+        "name":"Cerveja Brahma Duplo Malte Lata 350ml",
+        "min": 50,
+        "qnt": 20,
+        "status": false
+    }, 
+    {
+        "id": 10,
+        "name":"Cerveja Stella Artois Lata 269ml",
+        "min": 50,
+        "qnt": 50,
+        "status": true
     }
-    
 ]
 
 //Factory pattern para criação de itens

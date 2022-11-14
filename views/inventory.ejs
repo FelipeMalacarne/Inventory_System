@@ -33,6 +33,12 @@
     </div>
     <div id="content">
         <div id="content-mainframe">
+            <div id="welcome-user">
+                <h1>Bem Vindo, <%= name %> </h1>
+                <form action="/logout?_method=DELETE" method="POST">
+                    <button type="submit" id="logout-btn">Log Out</button>
+                </form>
+            </div>
             <div id="header">
                 <h1>Inventário</h1>
                 <div class="header-btns">
@@ -56,12 +62,7 @@
                         </svg>  
                     <input type="search" name="search-input" id="search-input">
                 </div>
-                <div id="welcome-user">
-                    <h1>Welcome <%= name %> </h1>
-                    <form action="/logout?_method=DELETE" method="POST">
-                        <button type="submit">Log Out</button>
-                    </form>
-                </div>
+
             </div>
             <div id="labels">
                 <div id="lbl-left" class = "lbl-half" >

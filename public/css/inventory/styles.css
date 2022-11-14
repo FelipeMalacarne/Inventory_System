@@ -101,6 +101,36 @@ body{
     border-bottom: 1px solid var(--secondary);
     padding: 25px;
 }
+#welcome-user{
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    align-items: center;
+    border-bottom: 1px solid var(--secondary);
+    padding: 0px 35px 15px 35px;
+}
+#welcome-user h1{
+    font-weight: 500;
+    font-size: 22px;
+}
+#logout-btn{
+    font-weight: 600;
+    border-radius: 8px;
+    background-color: var(--secondary);
+    color: var(--primary);
+    padding: 8px 16px;
+    font-size: 18px;
+}
+#logout-btn:hover{
+    background-color: var(--primary);
+    color: var(--secondary);
+    cursor: pointer;
+}
+#logout-btn:active{
+    background-color: var(--primary);
+    color: var(--primary-dark);
+    cursor: pointer;
+}
 .search-box{
     display: flex;
     align-items: center;

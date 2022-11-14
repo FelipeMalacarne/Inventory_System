@@ -11,22 +11,21 @@ body{
 }
 #login-frame{
     background-color: var(--primary);
-    height: 500px;
-    width: 300px;
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);   
     padding: 40px;
-    display: grid;
-    grid-template-rows: 180px 50px 240px;
-    gap: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
     border-radius: 15px;
 
 }
 #logo{
-    height: 180px;
-    width: 180px;
+    height: 170px;
+    width: 170px;
     border-radius: 50%;
     background-color: var(--secondary);
     display: flex;
@@ -37,39 +36,43 @@ body{
 #logo h1{
     color: var(--primary);
     font-weight: 700;
-    font-size: 52px;
+    font-size: 46px;
 }
 #welcome-text{
     justify-self: center;
+    padding-bottom:20px;
 }
 #welcome-text h1{
     font-weight: 700;
-    font-size: 38px;
+    font-size: 32px;
     color: var(--secondary);
+    text-align: center;
 }
 #welcome-text p{
     font-weight: 500;
-    font-size: 16px;
+    font-size: 15px;
     color: var(--secondary-light);
+    text-align: center;
+
 }
 #login-form{
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 25px;
 }
-#lbl-email, #lbl-senha{
+form div{
     display: flex;
     flex-direction: column;
     color: var(--secondary-light);
     font-size: 16px;
-    gap: 10px;
+    gap: 5px;
     
 }
-#lbl-email p, #lbl-senha p{
+form div label, form div label{
     padding-left: 8px;
     font-weight: 500;
 }
-input#email, input#senha{
+input#email, input#password{
     background-color: var(--primary-dark);
     border-radius: 10px;
     border: 1px solid var(--primary-dark);
@@ -77,26 +80,28 @@ input#email, input#senha{
     font-size: 18px;
 }
 
-input#submit{
+button{
     color: var(--primary);
     background-color: var(--secondary);
+    border: 1px solid var(--secondary-light);
     font-weight: 600;
-    font-size: 20px;
-    height: 42px;
-    border-radius: 10px;
-    padding: 6px;
-    margin-top: 20px;
+    font-size: 15px;
+    height: 32px;
+    border-radius: 5px;
+    padding: 4px;
+    width: 100%;
  
 }
-input#submit:hover{
+button:hover{
     color: var(--secondary);
     background-color: var(--primary);
 }
-input#submit:active{
+button:active{
     color: var(--primary-dark);
     background-color: var(--primary);
     border: 4px ;
 }
+
 
 /* remove arrows from number input  */
 /* https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
@@ -110,4 +115,11 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+form div {
+    display: flex;
+    flex-direction: column;
+}
+#submit{
+    margin-top: 10px;
 }

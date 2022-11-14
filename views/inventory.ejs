@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="stylesheet" href="./styles/reset.css">
-    <link rel="stylesheet" href="./styles/add.css">
-    <link rel="stylesheet" href="./styles/new.css">
-    <link rel="stylesheet" href="./styles/rm.css">
-    <link rel="stylesheet" href="./styles/del.css">
-    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="/css/Inventory/styles.css">
+    <link rel="stylesheet" href="/css/Inventory/reset.css">
+    <link rel="stylesheet" href="/css/Inventory/add.css">
+    <link rel="stylesheet" href="/css/Inventory/new.css">
+    <link rel="stylesheet" href="/css/Inventory/rm.css">
+    <link rel="stylesheet" href="/css/Inventory/del.css">
+    <script src="/js/inventory.js" defer></script>
     <title>Inventory</title>
 </head>
 <body>
@@ -18,8 +18,17 @@
     <div class="sidebar">
         <h1 id="logo">btc.</h1>
         <div class="sidebar-btns">
-            <div id="home-btn"><a href=""><img src="./images/home-icon.svg" alt="home-icon"></a></div>
-            <div id="inv-btn"> <a href=""><img src="./images/inv-icon.svg" alt="inv-icon"></a></div>
+            <div id="home-btn"><a href="">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M35.2535 17.711L19.9101 1.47374L18.8816 0.384806C18.6473 0.138331 18.3304 0 18.0001 0C17.6698 0 17.3529 0.138331 17.1185 0.384806L0.746686 17.711C0.506573 17.9642 0.316807 18.2659 0.18859 18.598C0.0603737 18.9302 -0.00369539 19.2862 0.000164591 19.645C0.016048 21.1249 1.17951 22.3064 2.57725 22.3064H4.26487V36H31.7353V22.3064H33.4586C34.1376 22.3064 34.777 22.0247 35.2574 21.516C35.494 21.2663 35.6815 20.9694 35.8089 20.6424C35.9364 20.3155 36.0013 19.9651 36 19.6114C36 18.8966 35.7339 18.2197 35.2535 17.711ZM20.2238 32.9729H15.7764V24.3959H20.2238V32.9729ZM28.8763 19.2792V32.9729H22.7651V23.3869C22.7651 22.4577 22.0543 21.7052 21.1768 21.7052H14.8234C13.9458 21.7052 13.235 22.4577 13.235 23.3869V32.9729H7.12389V19.2792H3.31186L18.004 3.73569L18.9213 4.70689L32.6922 19.2792H28.8763Z" fill="white"/>
+                </svg>
+                </a></div>
+            <div id="inv-btn"><a href="">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30 3H6C4.5 3 3 4.35 3 6V10.515C3 11.595 3.645 12.525 4.5 13.05V30C4.5 31.65 6.15 33 7.5 33H28.5C29.85 33 31.5 31.65 31.5 30V13.05C32.355 12.525 33 11.595 33 10.515V6C33 4.35 31.5 3 30 3ZM28.5 30H7.5V13.5H28.5V30ZM30 10.5H6V6H30V10.5Z" fill="white"/>
+                    <path d="M13.5 18H22.5V21H13.5V18Z" fill="white"/>
+                </svg>
+            </a></div>
         </div>
     </div>
     <div id="content">
@@ -33,7 +42,25 @@
                 </div>
             </div>
             <div id="search">
-                <div class="search-box"><img src="./images/search-icon.svg" alt="search-icon"><input type="search" name="search-input" id="search-input">
+                <div class="search-box">
+                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_5_32)">
+                        <path d="M10.9375 20.3125C16.1152 20.3125 20.3125 16.1152 20.3125 10.9375C20.3125 5.75983 16.1152 1.5625 10.9375 1.5625C5.75983 1.5625 1.5625 5.75983 1.5625 10.9375C1.5625 16.1152 5.75983 20.3125 10.9375 20.3125Z" stroke="#2C2B2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17.9688 17.9688L23.4375 23.4375" stroke="#2C2B2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_5_32">
+                        <rect width="25" height="25" fill="white"/>
+                        </clipPath>
+                        </defs>
+                        </svg>  
+                    <input type="search" name="search-input" id="search-input">
+                </div>
+                <div id="welcome-user">
+                    <h1>Welcome <%= name %> </h1>
+                    <form action="/logout?_method=DELETE" method="POST">
+                        <button type="submit">Log Out</button>
+                    </form>
                 </div>
             </div>
             <div id="labels">
